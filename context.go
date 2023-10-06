@@ -28,6 +28,7 @@ type Context struct {
 
 	hasZoom bool
 	zoom    int
+	maxZoom int
 
 	hasCenter bool
 	center    s2.LatLng
@@ -54,6 +55,7 @@ func NewContext() *Context {
 	t.width = 512
 	t.height = 512
 	t.hasZoom = false
+	t.maxZoom = 32 // Should never be reached
 	t.hasCenter = false
 	t.hasBoundingBox = false
 	t.background = nil
@@ -95,6 +97,11 @@ func (m *Context) SetSize(width, height int) {
 func (m *Context) SetZoom(zoom int) {
 	m.zoom = zoom
 	m.hasZoom = true
+}
+
+// SetMaxZoom sets the max zoom level (maxZoom is ignored when zoom is set explicitly)
+func (m *Context) SetMaxZoom(maxZoom int) {
+	m.maxZoom = maxZoom
 }
 
 // SetCenter sets the center coordinates
@@ -265,7 +272,7 @@ func (m *Context) determineExtraMarginPixels() (float64, float64, float64, float
 func (m *Context) determineZoom(bounds s2.Rect, center s2.LatLng) int {
 	b := bounds.AddPoint(center)
 	if b.IsEmpty() || b.IsPoint() {
-		return 15
+		return int(math.Min(float64(15), float64(m.maxZoom)))
 	}
 
 	tileSize := m.tileProvider.TileSize
@@ -295,12 +302,12 @@ func (m *Context) determineZoom(bounds s2.Rect, center s2.LatLng) int {
 	for zoom < 30 {
 		tiles := float64(uint(1) << uint(zoom))
 		if dx*tiles > w || dy*tiles > h {
-			return zoom - 1
+			return int(math.Min(float64(zoom-1), float64(m.maxZoom)))
 		}
 		zoom = zoom + 1
 	}
 
-	return 15
+	return int(math.Min(float64(15), float64(m.maxZoom)))
 }
 
 // determineCenter computes a point that is visually centered in Mercator projection
