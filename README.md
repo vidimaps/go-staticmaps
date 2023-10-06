@@ -1,7 +1,7 @@
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/flopp/go-staticmaps)](https://pkg.go.dev/github.com/flopp/go-staticmaps)
-[![Go Report Card](https://goreportcard.com/badge/github.com/flopp/go-staticmaps)](https://goreportcard.com/report/flopp/go-staticmaps)
-![golang/static](https://github.com/flopp/go-staticmaps/workflows/golang/static/badge.svg)
-[![License MIT](https://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](https://github.com/flopp/go-staticmaps/)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/vidimaps/go-staticmaps)](https://pkg.go.dev/github.com/vidimaps/go-staticmaps)
+[![Go Report Card](https://goreportcard.com/badge/github.com/vidimaps/go-staticmaps)](https://goreportcard.com/report/flopp/go-staticmaps)
+![golang/static](https://github.com/vidimaps/go-staticmaps/workflows/golang/static/badge.svg)
+[![License MIT](https://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](https://github.com/vidimaps/go-staticmaps/)
 
 # go-staticmaps
 A go (golang) library and command line tool to render static map images using OpenStreetMap tiles.
@@ -22,12 +22,12 @@ go-staticmaps comes with a command line tool called `create-static-map` for use 
 Installing go-staticmaps is as easy as
 
 ```bash
-go get -u github.com/flopp/go-staticmaps
+go get -u github.com/vidimaps/go-staticmaps
 ```
 
 For the command line tool, use
 ```bash
-go get -u github.com/flopp/go-staticmaps/create-static-map
+go get -u github.com/vidimaps/go-staticmaps/create-static-map
 ```
 
 Of course, your local Go installation must be setup up properly.
@@ -42,7 +42,7 @@ package main
 import (
   "image/color"
 
-  sm "github.com/flopp/go-staticmaps"
+  sm "github.com/vidimaps/go-staticmaps"
   "github.com/fogleman/gg"
   "github.com/golang/geo/s2"
 )
@@ -70,7 +70,7 @@ func main() {
 ```
 
 
-See [PkgGoDev](https://pkg.go.dev/github.com/flopp/go-staticmaps) for a complete documentation and the source code of the [command line tool](https://github.com/flopp/go-staticmaps/blob/master/create-static-map/create-static-map.go) for an example how to use the package.
+See [PkgGoDev](https://pkg.go.dev/github.com/vidimaps/go-staticmaps) for a complete documentation and the source code of the [command line tool](https://github.com/vidimaps/go-staticmaps/blob/master/create-static-map/create-static-map.go) for an example how to use the package.
 
 
 ### Command Line Usage
